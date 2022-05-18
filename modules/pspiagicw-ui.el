@@ -19,24 +19,55 @@
 (setq modus-themes-syntax '(faint green-strings yellow-comments alt-syntax))
 
 (use-package catppuccin-theme)
-(use-package doom-modeline
-  :hook (after-init . doom-modeline-mode)
-  :custom
-  (doom-modeline-icon t)
-  (doom-modeline-project-detection 'project.el)
-  (doom-modeline-buffer-state-icon t)
-  (doom-modeline-major-mode-color-icon t)
-  (doom-modeline-buffer-modification-icon t)
-  (doom-modeline-buffer-file-name-style 'file-name))
+
+(use-package spacemacs-theme)
+
+;; (setq default-frame-alist '((vertical-scroll-bars) (font . "JetBrains Mono 13" )))
+(setq default-frame-alist '((vertical-scroll-bars)))
+
+(load-theme 'doom-one t)
 
 
-(setq default-frame-alist '((vertical-scroll-bars) (font . "JetBrains Mono 13")))
-
-(load-theme 'doom-dracula t)
-
+(defun pspiagicw-init-fonts (&optional reload)
+  "Loads `pspiagicw-fonts'.'"
+  )
 
 (use-package evil-terminal-cursor-changer
   :config
   (evil-terminal-cursor-changer-activate))
+
+(setq pspiagicw-default-font (font-spec :family "JetBrains Mono" :size 15))
+
+;; pspiagicw's emacs font
+;; (defvar pspiagicw-default-font nil
+;;   "The default font to use.")
+;; (defvar pspiagicw-variable-pitch-font nil
+;;   "The default font to use for variable-pitch text")
+
+;; (defvar pspiagicw-serif-font nil
+;;   "The default font to use for the `fixed-pitch-serif' font.")
+
+;; (defun pspiagicw-init-fonts ()
+;;   (dolist (map '((default . ,pspiagicw-default-font)
+;;                  (fixed-pitch . ,pspiagicw-default-font)
+;;                  (fixed-pitch-serif . ,pspiagicw-serif-font)
+;;                  (variable-pitch . ,pspiagicw-variable-pitch-font)))
+;;     (when-let* ((face (car map))
+;;                 (font (cdr map)))
+;;       (dolist (frame (frame-list))
+;;         (when (display-multi-font-p frame)
+;;           (set-face-attribute face frame
+;;                               :width 'normal :weight 'normal
+;;                               :slant 'normal :font font )))))
+;;   )
+(add-variable-watcher 'pspiagicw-default-font #'pspiagicw/doom-font-change)
+
+(defun pspiagicw/doom-font-change (name value &optional operation where)
+  (set-face-attribute 'default nil :width 'normal :weight 'normal :slant 'normal :font value))
+
+;; (add-hook 'after-init-hook (pspiagicw/doom-font-change nil pspiagicw-default-font nil nil))
+;; (pspiagicw/doom-font-change nil pspiagicw-default-font nil nil)
+;; (set-face-attribute 'default nil :width 'normal :weight 'normal :slant 'normal :font pspiagicw-default-font)
+
 (provide 'pspiagicw-ui)
 

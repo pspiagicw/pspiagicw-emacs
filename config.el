@@ -5,9 +5,10 @@
 (require 'pspiagicw-use-package)
 ;; Loadejk
 (require 'pspiagicw-ui)
-;; Load the dashboard
+(require 'pspiagicw-modeline)
+;; ;; Load the dashboard
 (require 'pspiagicw-dashboard)
-;; Completion
+;; ;; Completion
 (require 'pspiagicw-completion)
 (require 'pspiagicw-evil)
 (require 'pspiagicw-bindings)
@@ -16,7 +17,7 @@
 ;; Load all the important bindings
 ;; Project settings
 (require 'pspiagicw-projects)
-(require 'pspiagicw-mail)
+;; (require 'pspiagicw-mail)
 ;; Company-mode
 (require 'pspiagicw-company)
 (require 'pspiagicw-lsp)

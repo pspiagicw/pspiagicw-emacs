@@ -73,10 +73,49 @@
   :init
   (setq org-roam-v2-ack t)
   :config
-  (setq org-roam-directory "~/documents/org/org-roam")
+  (setq org-roam-directory "~/Documents/org/org-roam")
   (setq org-roam-completion-everywhere t)
   (org-roam-setup))
 
+
+(setq pspiagicw/gtd-next-action-head "Next Actions: ")
+(setq pspiagicw/gtd-waiting-head "Waiting on:")
+(setq pspiagicw/gtd-complete-head "Completed items:")
+(setq pspiagicw/gtd-project-head "Projects:")
+(setq pspiagicw/gtd-someday-head "Someday/maybe:")
+(setq pspiagicw/gtd-read-head "Read/Research:")
+
+(use-package org
+  :ensure nil
+  :config
+  (setq org-agenda-files '("~/Documents/org/tasks"))
+  (setq org-icalendar-combined-agenda-file "~/Documents/org/agenda.ics")
+  (setq org-agenda-custom-commands
+        '(
+          ("g" "GTD View"
+           ((agenda)
+            (tags-todo "NEXT" ((org-agenda-overriding-header pspiagicw/gtd-next-action-head)))
+            (tags-todo "WAITING" ((org-agenda-overriding-header pspiagicw/gtd-waiting-head)))
+            (tags-todo "READ" ((org-agenda-overriding-header pspiagicw/gtd-read-head)))
+            (tags-todo "PROJECT" ((org-agenda-overriding-header pspiagicw/gtd-project-head)))
+            (todo "DONE" ((org-agenda-overriding-header pspiagicw/gtd-complete-head)))
+            (tags "SOMEDAY" ((org-agenda-overriding-header pspiagicw/gtd-someday-head)))
+            ))
+          ))
+  (setq org-todo-keywords
+        '(
+          (sequence "TODO(t)" "WAITING(w)" "NEXT" "|" "DONE(d)")
+          ))
+  (setq org-refile-targets
+        '(
+          (nil :maxlevel . 3)
+          (org-agenda-files :maxlevel . 1)))
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-use-outline-path t)
+  (setq org-agenda-start-on-weekday nil)
+  (setq org-agenda-span 10)
+  (setq org-agenda-start-day "-3d")
+  )
 
 (general-define-key
  :keymaps 'override
@@ -85,7 +124,7 @@
  "r" '(:ignore t :which-key "Org Roam Binding")
  "rf" '(org-roam-node-find :which-key "Find Org Roam Node")
  "ri" '(org-roam-node-insert :which-key "Insert Org Roam Node"))
+
 (use-package org-roam-ui)
 
-(use-package org-roam)
 (provide 'pspiagicw-org)

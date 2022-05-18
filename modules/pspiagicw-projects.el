@@ -6,9 +6,11 @@
   (setq projectile-project-search-path '("~/code/python/projects/" "~/code/golang/projects/" "~/code/flutter/projects/" "~/code/other-projects/"))
   (setq projectile-switch-project-action #'projectile-dired)
   (setq projectile-tags-command "ctags -Re -f \"%s\" %s \"%s\"")
+  (setq tags-revert-without-query t)
   (projectile-mode 1))
 
 
+(use-package ripgrep)
 (general-define-key
  :states '(normal visual)
  :keymaps 'override
@@ -18,7 +20,7 @@
  "pc" '(projectile-compile-project :which-key "Compile Project")
  "pt" '(projectile-test-project :which-key "Test Project")
  "pf" '(projectile-find-file :which-key "Find File in Project")
- "ps" '(projectile-grep :which-key "Grep in your Project")
+ "ps" '(projectile-ripgrep :which-key "Grep in your Project")
  "pr" '(projectile-run-project :which-key "Run Project")
  "pb" '(projectile-switch-to-buffer :which-key "Switch to Buffer in Project")
  "pk" '(projectile-kill-buffers :which-key "Kill all Project buffers")

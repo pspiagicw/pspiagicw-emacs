@@ -20,7 +20,7 @@
  "miw" '(python-skeleton-while :which-key "Insert while skeleton")
  "mj" '(imenu :which-key "Jump to definition"))
 
-(use-package lsp-pyright
-  :hook (python-mode . lsp-pyright))
+;; (use-package lsp-pyright
+;;   :hook (python-mode . lsp-pyright))
 
 (provide 'pspiagicw-python)

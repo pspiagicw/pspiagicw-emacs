@@ -17,6 +17,6 @@
   "!" '(shell-command :which-key "Execute Shell Command")
   "&" '(async-shell-command :which-key "Execute Shell Command Async")
   "'" '(pspiagicw/new-eshell :which-key "Open eshell")
-  "RET" '(bookmark-jump :which-key "Browse Bookmarks"))
+  "RET" '(consult-bookmark :which-key "Browse Bookmarks"))
 
 (provide 'pspiagicw-global-bindings)

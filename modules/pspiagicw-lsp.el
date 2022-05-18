@@ -25,7 +25,8 @@
   (setq lsp-ui-sideline-enable nil)
   (setq lsp-ui-sideline-show-hover nil)
   (setq lsp-ui-sideline-show-diagnostics nil)
-  (setq lsp-ui-sideline-show-code-actions nil))
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (lsp-ui-doc-mode 1))
 
 (general-define-key
  :states '(normal visual)
@@ -39,6 +40,8 @@
  "lF" '(lsp-treemacs-errors-list :which-key "List errors")
  "ld" '(lsp-ui-doc-focus-frame :which-key "Focus doc frame")
  "lD" '(lsp-ui-doc-unfocus-frame :which-key "Unfocus doc frame")
+ "lq" '(quickrun :which-key "QuickRun")
+ "lQ" '(quickrun-shell :which-key "Quick Run with Shell")
  "lc" '(lsp-execute-code-action :which-key "Execute Code Actions"))
 
 (provide 'pspiagicw-lsp)

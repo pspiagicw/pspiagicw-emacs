@@ -1,9 +1,9 @@
 ;;; pspiagicw-evil.el -*- lexical-binding: t; -*-
 
-(use-package undo-tree
-  :config
-  (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo")))
-  (global-undo-tree-mode 1))
+;; (use-package undo-tree
+;;   :config
+;;   (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo")))
+;;   (global-undo-tree-mode 1))
 
 (use-package evil
   :init
@@ -15,7 +15,7 @@
   (setq evil-want-C-w-delete t)
   (setq evil-want-C-u-delete t)
   (setq evil-want-minibuffer nil)
-  (setq evil-undo-system nil)
+  (setq evil-undo-system 'undo-redo)
   (define-key evil-insert-state-map (kbd "C-w") 'evil-delete-backward-word)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
   (define-key minibuffer-mode-map (kbd "C-w") 'backward-kill-word)
@@ -43,8 +43,6 @@
   :config
   (global-evil-matchit-mode 1))
 
-(use-package evil-numbers
-  :after evil)
 
 (use-package evil-escape
   :init
@@ -58,4 +56,9 @@
   (evil-goggles-mode))
 
 
+(use-package evil-numbers
+  :after evil
+  :config
+  (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt))
 (provide 'pspiagicw-evil)

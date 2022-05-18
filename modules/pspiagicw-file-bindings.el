@@ -10,6 +10,7 @@
  :keymaps 'override
  :prefix "SPC"
  "f" '(:ignore t :which-key "Files")
+ ;; "ff" '(find-file :which-key "Find Files Interactively")
  "ff" '(find-file :which-key "Find Files Interactively")
  "fs" '(save-buffer :which-key "Save Current Buffer")
  "fS" '(save-some-buffers :which-key "Save Current Buffer")

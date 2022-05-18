@@ -1,6 +1,6 @@
 ;;; pspiagicw-search-bindnigs.el -*- lexical-binding: t; -*-
 
-(use-package deadgrep)
+;; (use-package deadgrep)
 
 (general-define-key
  :states '(normal visual)
@@ -10,7 +10,7 @@
  "sf" '(grep-find :which-key "Search Using Grep Recursively")
  "ss" '(grep :which-key "Search Using Grep")
  "so" '(occur :which-key "Search Using Occur")
- "sd" '(deadgrep :which-key "Search using Deadgrep")
+ ;; "sd" '(deadgrep :which-key "Search using Deadgrep")
  "sr" '(consult-ripgrep :which-key "Search Using Occur"))
 
 (provide 'pspiagicw-search-bindings)
